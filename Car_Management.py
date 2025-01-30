@@ -1,12 +1,23 @@
 Cars = []
+New_Car = {}
+Brand = ''
+Model = ''
+Color = ''
+HP = ''
+Price = ''
+Available = ''
 # Base Model
 Base_model ={'Brand' : 'BMW', 'Model' : 'M4', 'Color' : 'Silver', 'HP' : '510 Cv', 'Price' : '800 $/day',
             'Available' : 'Yes', 'ID' : '01'}
 print("Please Register a new Car\n")
 
-while True
-    add_car = input("Do you want to add a car? (Yes or No)")
-    if add_car == 'Yes'
+
+
+
+while True :
+    add_car = input("Do you want to add a car? (Yes or No)\n")
+    if add_car.lower() == 'yes' :
+        
         New_Car = Base_model
         New_Car[Brand] = input("Insert the car Brand\n")
         New_Car[Model] = input("Insert the car Model\n")
@@ -15,13 +26,14 @@ while True
         New_Car[Price] = input("Insert the Rental Price\n")
         New_Car[Available] = input("Insert if the car is Available or not (Yes or No)\n")
 
-    Cars.append(New_Car)
+        Cars.append(New_Car)
+        print("The car was added to the car List\n")
 
-    print("The car was added to the car List")
+    
 
-    see_car_list = input("Do you want to see the car list?(Yes or No)")
-    if see_car_list == 'Yes'
+    see_car_list = input("Do you want to see the car list?(Yes or No)\n")
+    if see_car_list == 'yes' :
         print(Cars)
 
-    add_car = input("Do you want to add another car? (Yes or No)")
-    if add_car == 'No' : break
+    add_car = input("Do you want to add another car? (Yes or No)\n")
+    if add_car.lower() == 'no' : break
