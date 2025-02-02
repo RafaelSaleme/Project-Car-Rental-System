@@ -1,20 +1,62 @@
+import os
 import Car_Management
+import Car_Customer_List
 
-while True :
-    Request = input("Do you want to make a car Request (Yes or No)")
-    if Request.lower() != 'Yes' : break 
+Requests = {}
+Request = ''
+
+while Request.lower() != '3' :
+
+    print("Car Request Menu\n\n")
+
+    Request = input("1. Make a new Request\n2. Cancel Request\n3. Exit\n")
     
-    print(Car_Management.Cars)
+    # New Request
+    if Request.lower() == '1' : 
     
-    Car_Request = input("What car do you want to request?")
+        os.system('cls')
+        print(Car_Management.Cars)
     
-    if Car_Management.Cars[Car_Request[Car_Management.Available]] == 'Yes' :
-        print("Car successfully requested")
         
-        Car_Management.Cars[Car_Request[Car_Management.Available]] = 'No'
+        Car_Request_ID = input("Insert the ID of the car you want to request\n")
+    
+    
+    
+        if Car_Management.Cars[Car_Request_ID]['Available'].lower() == 'yes' :
 
-    elif Car_Management.Cars[Car_Request[Car_Management.Available]] == 'No' :
-        print("The car is already requested!")
+            os.system('cls')
 
-    Request = input("Do you want to make another request?")
-    if Request == 'No' : break
+            user_input = input("Insert your ID\n")
+
+            Requests[Car_Request_ID] = user_input
+            os.system('cls')
+            print("Car successfully requested!\n")
+        
+            Car_Management.Cars[Car_Request_ID]['Available'] = 'No'
+
+        elif Car_Management.Cars[Car_Request_ID]['Available'].lower() == 'no' :
+            os.system('cls')
+            print("The car is already requested!\n")
+
+    # Request Cancel
+    elif Request.lower() == '2' :
+
+        os.system('cls')
+        print(Car_Management.Cars)
+    
+
+        Car_Request_ID = input("Insert the ID of the car you want to cancel the request\n")
+
+        if Car_Management.Cars[Car_Request_ID]['Available'].lower() == 'no' :
+            os.system('cls')
+            print("Car request successfully canceled!\n")
+        
+            Car_Management.Cars[Car_Request_ID]['Available'] = 'Yes'
+
+        elif Car_Management.Cars[Car_Request_ID]['Available'].lower() == 'yes' :
+            os.system('cls')
+            print("There is no request for thi car!\n")
+
+
+
+os.system('cls')
